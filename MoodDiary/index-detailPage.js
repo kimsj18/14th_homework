@@ -19,9 +19,9 @@ const 일기목록 = location.search
         switch(일기내용배열[일기인덱스].기분){
             case "happy" : 기분한글변환 = "행복해요"; break;
             case "sad" : 기분한글변환 = "슬퍼요"; break;
-            case "angry" : 기분한결변환 = "화나요"; break;
+            case "angry" : 기분한글변환 = "화나요"; break;
             case "surprised" : 기분한글변환 = "놀라워요"; break;
-            default : 기분한그러변환 = "기타";
+            default : 기분한글변환 = "기타";
         } 
             
 
