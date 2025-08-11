@@ -14,6 +14,18 @@ const 일기목록 = location.search
         
         alert(`${일기내용배열[일기인덱스].날짜}에 작성한 제목: "${일기내용배열[일기인덱스].제목}" 의 상세 페이지 입니다.`)
 
+        let 기분한글변환 = "";
+
+        switch(일기내용배열[일기인덱스].기분){
+            case "happy" : 기분한글변환 = "행복해요"; break;
+            case "sad" : 기분한글변환 = "슬퍼요"; break;
+            case "angry" : 기분한결변환 = "화나요"; break;
+            case "surprised" : 기분한글변환 = "놀라워요"; break;
+            default : 기분한그러변환 = "기타";
+        } 
+            
+
+
         const 일기상세HTML = 
         `<div class="일기상세__다이어리">
            <div class="일기상세__다이어리__제목">민지의 다이어리</div>
@@ -27,7 +39,7 @@ const 일기목록 = location.search
                <div class="일기상세__메인__헤드__감정날짜">
                    <div class="일기상세__메인__헤드__감정날짜__감정">
                       <div ><img src="./assets/images/${일기내용배열[일기인덱스].기분}.png" alt="" class="일기상세__메인__헤드__감정날짜__감정__감정이모티콘"></div>
-                       <div>${일기내용배열[일기인덱스].기분}</div>
+                        <div>${기분한글변환}</div>
                    </div>
                    <div>${일기내용배열[일기인덱스].날짜}</div>
                </div>
