@@ -51,7 +51,7 @@ const 일기작성__등록 = () => {
             </div>
             <div>${el.제목}</div>
         </a>
-        <button class="일기삭제버튼">X</button>
+        <button class="일기삭제버튼" onclick="일기삭제(event, ${index})">X</button>
     </div>
     `).join("")
 
@@ -70,6 +70,12 @@ const 일기작성__등록 = () => {
 window.onload = () => {
     일기사이드바()
     일기목록불러오기()
+
+    document.getElementById("일기보관함").style.textDecoration = "underline red"
+    // document.getElementById("일기보관함").style.fontWeight = "700"
+    document.getElementById("일기보관함").style.textUnderlineOffset = "8px"
+    document.getElementById("일기보관함").style.textDecorationThickness = "2px"
+
 
     // 일기사이드바()
     // document.getElementById("일기목록").innerHTML = 일기목록불러오기()
@@ -131,7 +137,7 @@ const 기분필터 = (event) => {
             </div>
             <div>${el.제목}</div>
         </a>
-        <button class="일기삭제버튼">X</button>
+        <button class="일기삭제버튼" onclick="일기삭제(event, ${index})">X</button>
    </div>
     `).join("")
 
@@ -142,6 +148,7 @@ const 기분필터 = (event) => {
 
 const 모달열기 = (모달종류) => {
     document.getElementById(모달종류).style = "display: block"
+    console.log("모달열기호출", 모달종류)
 }
 
 const 모달닫기 = (모달종류) => {
@@ -150,16 +157,36 @@ const 모달닫기 = (모달종류) => {
 
 
 const 메뉴이동 = (클릭메뉴) => {
+    const 일기버튼 = document.getElementById("일기보관함");
+    const 사진버튼 = document.getElementById("사진보관함")
+
     switch (클릭메뉴) {
         case "일기클릭": {
             일기사이드바()
             일기목록불러오기()
+
+            document.getElementById("일기보관함").style.textDecoration = "underline red"
+            // document.getElementById("일기보관함").style.fontWeight = "700"
+            document.getElementById("일기보관함").style.textUnderlineOffset = "8px"
+            document.getElementById("일기보관함").style.textDecorationThickness = "2px"
+            document.getElementById("사진보관함").style.textDecoration = "none"
+            document.getElementById("사진보관함").style.fontWeight = "0"
+            document.getElementById("사진보관함").style.textUnderlineOffset = "none"
+            document.getElementById("사진보관함").style.textDecorationThickness = "none"
 
             break;
         }
         case "강아지클릭": {
             사진사이드바()
             강아지불러오는기능()
+            document.getElementById("사진보관함").style.textDecoration = "underline red"
+            // document.getElementById("사진보관함").style.fontWeight = "700"
+            document.getElementById("사진보관함").style.textUnderlineOffset = "8px"
+            document.getElementById("사진보관함").style.textDecorationThickness = "2px"
+            document.getElementById("일기보관함").style.textDecoration = "none"
+            document.getElementById("일기보관함").style.fontWeight = "0"
+            document.getElementById("일기보관함").style.textUnderlineOffset = "none"
+            document.getElementById("일기보관함").style.textDecorationThickness = "none"
             break;
         }
     }
@@ -218,7 +245,7 @@ const 일기목록불러오기 = () => {
             </div>
             <div>${el.제목}</div>
         </a>
-        <button class="일기삭제버튼">X</button>
+        <button class="일기삭제버튼" onclick="일기삭제(event, ${index})">X</button>
     </div>
      
     `).join("")}
@@ -279,7 +306,7 @@ let 타이머 = ""
             </div>
             <div>${el.제목}</div>
         </a>
-        <button class="일기삭제버튼">X</button>
+        <button class="일기삭제버튼" onclick="일기삭제(event,${index})">X</button>
     </div>
 
 
@@ -290,6 +317,27 @@ let 타이머 = ""
 
     },1000)
     
+}
+
+let 삭제할일기 = ""
+const 일기삭제 = (event, index) => {
+    모달열기('일기삭제모달그룹');
+    삭제할일기 = index;
+}
+
+const 일기삭제버튼 = () => {
+
+    const 저장된일기 = localStorage.getItem("일기목록")
+    const 일기목록 = JSON.parse(저장된일기)
+    console.log(일기목록)
+
+    const 삭제후일기목록 = 일기목록.splice(삭제할일기,1)
+    console.log(삭제후일기목록)
+    console.log(일기목록)
+    
+    localStorage.setItem("일기목록", JSON.stringify(일기목록))
+
+    일기목록불러오기()
 }
 
 

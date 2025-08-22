@@ -8,14 +8,10 @@
     <script src="./JS/diary.js"></script>
     <script src="./JS/dogGallery.js"></script>
     <script src="./index.js"></script>
-  
-  
 
 </head>
 
 <body>
-
-
     <!-- <div class="label">
         <div class="label__내용"><h1>일기보관함_메인</h1></div>
     </div> -->
@@ -32,10 +28,10 @@
 
             <div class="일기사진선택">
                 <div class="일기사진">
-                    <button onclick="메뉴이동('일기클릭')">일기보관함</button>
-                    <button onclick="메뉴이동('강아지클릭')">사진보관함</button>
+                    <button onclick="메뉴이동('일기클릭')" id="일기보관함">일기보관함</button>
+                    <button onclick="메뉴이동('강아지클릭')" id="사진보관함">사진보관함</button>
                 </div>
-                
+
                 <div class="필터일기등록" id="필터일기등록">
                     <!-- <select name="" id="기분필터" onchange="기분필터(event)">
                         <option value="all">전체</option>
@@ -71,13 +67,7 @@
             </div>
         </div>
 
-        <!-- <div class="footer">
-        <div class="footer__내용">
-            <div><b>민지의 다이어리</b></div>
-            <div>대표</div>
-            <div>Copyright @ 2024</div>
-        </div>
-    </div> -->
+
 
         <div class="모달그룹" id="일기작성모달">
             <div class="모달배경" onclick="모달닫기('일기작성모달'); 모달닫기('모달등록완료')"> </div>
@@ -141,7 +131,7 @@
                     </div>
                 </div>
                 <div class="일기작성닫기등록">
-                    <button id="닫기" onclick="모달열기('일기등록취소모달')">닫기</button>
+                    <button id="닫기" onclick="모달열기('일기등록취소모달그룹')">닫기</button>
                     <button onclick="일기작성__등록()" id="등록하기" disabled>등록하기</button>
                 </div>
             </div>
@@ -151,24 +141,46 @@
                     <div>일기등록완료</div>
                     <div>등록이 완료되었습니다.</div>
                 </div>
-                <button onclick="모달닫기('일기작성모달'); 모달닫기('모달등록완료')"  >확인</button>
+                <button onclick="모달닫기('일기작성모달'); 모달닫기('모달등록완료')">확인</button>
             </div>
 
-            <div id="일기등록취소모달">
-                <div>
-                    <div>일기 등록 취소</div>
-                    <div>일기 등록을 취소 하시겠어요?</div>
-                </div>
-                <div>
-                    <button onclick="모달닫기('일기등록취소모달')">계속 작성</button>
-                    <button onclick="모달닫기('일기작성모달'); 모달닫기('일기등록취소모달')">등록 취소</button>
-                </div>
-            </div>
+         
 
         </div>
 
 
+
+
+
     </div>
+
+    <div class="일기삭제모달그룹" id="일기삭제모달그룹">
+        <div class="일기삭제모달배경"></div>
+        <div class="일기삭제모달" id="일기삭제모달">
+            <div class="일기삭제모달__내용">
+                <div class="일기삭제모달__내용__1">일기 삭제</div>
+                <div class="일기삭제모달__내용__2">일기를 삭제 하시겠어요?</div>
+            </div>
+            <div class="일기삭제모달__버튼">
+                <button onclick="모달닫기('일기삭제모달그룹')" class="일기삭제모달버튼" id="일기삭제모달버튼__취소">취소</button>
+                <button onclick="일기삭제버튼(); 모달닫기('일기삭제모달그룹')" class="일기삭제모달버튼" id="일기삭제모달버튼__완료">삭제</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="일기등록취소모달그룹" id="일기등록취소모달그룹">
+        <div class="일기등록취소모달배경" onclick="모달닫기('일기등록취소모달그룹')"></div>
+        <div id="일기등록취소모달">
+            <div>
+                <div>일기 등록 취소</div>
+                <div>일기 등록을 취소 하시겠어요?</div>
+            </div>
+            <div>
+                <button onclick="모달닫기('일기등록취소모달그룹')">계속 작성</button>
+                <button onclick="모달닫기('일기작성모달'); 모달닫기('일기등록취소모달')">등록 취소</button>
+            </div>
+        </div>
     </div>
 
 
