@@ -31,7 +31,7 @@ const App = () => {
     setContent(event.target.value)
   }
 
-  const onClickSignUp = (event) => {
+  const onClickSignUp = () => {
     if (email === "") {
       setEmailError("필수입력사항")
     } else {
@@ -119,15 +119,15 @@ const App = () => {
           <div>사진 첨부</div>
           <div id="사진첨부목록">
             <div className="사진첨부리스트">
-              <img src="./assets/icons/add.png"></img>
+              <img src="../assets/icons/add.png"></img>
               <div>클릭해서 사진 업로드</div>
             </div>
             <div className="사진첨부리스트">
-              <img src="./assets/icons/add.png"></img>
+              <img src="../assets/icons/add.png"></img>
               <div>클릭해서 사진 업로드</div>
             </div>
             <div className="사진첨부리스트">
-              <img src="./assets/icons/add.png"></img>
+              <img src="../assets/icons/add.png"></img>
               <div>클릭해서 사진 업로드</div>
             </div>
           </div>
