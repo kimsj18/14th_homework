@@ -11,10 +11,10 @@ const BoardNew = () => {
   const [content, setContent] = useState("")
 
 
-  const [emailError, setEmailError] = useState("")
-  const [passwordError, setPasswordError] = useState("")
-  const [titleError, setTitleError] = useState("")
-  const [contentError, setContentError] = useState("")
+  const [emailError, setEmailError] = useState("필수입력사항")
+  const [passwordError, setPasswordError] = useState("필수입력사항")
+  const [titleError, setTitleError] = useState("필수입력사항")
+  const [contentError, setContentError] = useState("필수입력사항")
   const [isActive, setIsActive] = useState(false)
 
 
