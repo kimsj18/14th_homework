@@ -30,7 +30,7 @@ export default function BoardsPage() {
 
     const onclickDelete = async (event) => {
         await deleteBoard({
-            variables:{
+            variables: {
                 boardId: event.target.id
             },
             refetchQueries: [
@@ -40,24 +40,26 @@ export default function BoardsPage() {
     }
 
     return (
-        <div className={style.boards}>
-            <div className={style.header}>
-                <div className={style.header__number}>번호</div>
-                <div className={style.header__title}>제목</div>
-                <div className={style.header__writer}>작성자</div>
-                <div className={style.header__date}>날짜</div>
+        <div className={style.page}>
+            <div className={style.boards}>
+                <div className={style.header}>
+                    <div className={style.header__number}>번호</div>
+                    <div className={style.header__title}>제목</div>
+                    <div className={style.header__writer}>작성자</div>
+                    <div className={style.header__date}>날짜</div>
+                </div>
+                {data?.fetchBoards.map((el, index) => {
+                    return (
+                        <div key={el._id} className={style.data}>
+                            <div className={style.data__number}>{index + 1}</div>
+                            <Link href={`/board/detail/${el._id}`}><div className={style.data__title}>{el.title}</div></Link>
+                            <div className={style.data__writer}>{el?.writer}</div>
+                            <div className={style.data__date}>{el?.createdAt.slice(0, 10).replaceAll("-", ".")}</div>
+                            <div className={style.data__delete}><img src="/assets/icons/delete.png" alt="" id={el?._id} onClick={onclickDelete} /></div>
+                        </div>
+                    )
+                })}
             </div>
-            {data?.fetchBoards.map((el, index) => {
-                return (
-                    <div key={el._id} className={style.data}>
-                        <div className={style.data__number}>{index + 1}</div>
-                        <Link href={`/board/detail/${el._id}`}><div className={style.data__title}>{el.title}</div></Link>
-                        <div className={style.data__writer}>{el?.writer}</div>
-                        <div className={style.data__date}>{el?.createdAt.slice(0,10)}</div>
-                        <div className={style.data__delete}><img src="/assets/icons/delete.png" alt="" id={el?._id} onClick={onclickDelete} /></div>
-                    </div>
-                )
-            })}
         </div>
     )
 }
