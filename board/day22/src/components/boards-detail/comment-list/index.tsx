@@ -1,7 +1,6 @@
 "use client"
 
 import style from "./style.module.css"
-import useBoardsDetail from "../detail/hooks";
 import useCommentListPage from "./hooks";
 
 

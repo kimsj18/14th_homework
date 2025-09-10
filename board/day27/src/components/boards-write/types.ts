@@ -6,6 +6,12 @@ export interface IMyvariables {
     updateBoardInput: {
         title?: string;
         contents?: string;
+        youtubeUrl?: string,
+        boardAddress?:{
+            zipcode?: string,
+            address?: string,
+            addressDetail?: string
+        }
     }
 }
 

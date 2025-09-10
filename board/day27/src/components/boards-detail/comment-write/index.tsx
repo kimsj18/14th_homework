@@ -1,6 +1,7 @@
 "use client"
 import style from "./style.module.css"
 import useCommentWritePage from "./hooks";
+import { Rate } from "antd";
 
 
 
@@ -11,7 +12,9 @@ export default function CommentWritePage() {
         onChangeWriter,
         onChangePassword,
         onChangeComment,
-        onClickSubmit } = useCommentWritePage()
+        onClickSubmit,
+        onclickRating
+    } = useCommentWritePage()
 
 
 
@@ -24,7 +27,10 @@ export default function CommentWritePage() {
                     <img src="/assets/icons/chat.png"></img>
                     <div>댓글</div>
                 </div>
-                <div className={style.comment__star}>별 별 별 별 별</div>
+                <Rate allowHalf className={style.comment__star} onChange={onclickRating} />
+                
+                {/* <span>점수:{rating} </span> */}
+                {/* <div className={style.comment__star}>별 별 별 별 별</div> */}
                 <div className={style.comment__main}>
                     <div className={style.comment__info}>
                         <div className={style.comment__info__write}>

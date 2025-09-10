@@ -1,7 +1,10 @@
 "use client"
 
 import useBoardsWrite from "./hooks";
-import style from "./style.module.css"
+import style from "./style.module.css";
+import { Modal } from 'antd';
+import DaumPostcodeEmbed from 'react-daum-postcode';
+
 
 import { IBoardsWriteProps } from "./types";
 
@@ -17,7 +20,16 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
         passwordError,
         titleError,
         contentError,
-        isActive
+        isActive,
+        onToggleModal,
+        isModalOpen,
+        zonecode,
+        address,
+        detailAddress,
+        onChangeDetailaddress,
+        onChangeYoutube,
+        
+
     } = useBoardsWrite()
 
     return (
@@ -55,22 +67,22 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
                     <div className={style.메인__1__1} id="메인__주소__검색">
                         <div>주소</div>
                         <div className={style.메인__주소__주소검색}>
-                            <input type="number" placeholder="01234" className={`${style.input} ${style.주소검색인풋}`} />
-                            <button className={style.주소검색버튼}>우편번호 검색</button>
+                            <input type="number" placeholder="01234" className={`${style.input} ${style.주소검색인풋}`} value={zonecode !== "" ? zonecode : props?.data?.fetchBoard?.boardAddress?.zipcode || ""} />
+                            <button onClick={onToggleModal} className={style.주소검색버튼}>우편번호 검색</button>
                         </div>
                     </div>
                     <div>
-                        <input className={style.input} type="text" placeholder="주소를 입력해 주세요." />
+                        <input className={style.input} type="text" placeholder="주소를 입력해 주세요." value={address !== "" ? address : props?.data?.fetchBoard?.boardAddress?.address || "" }/>
                     </div>
                     <div>
-                        <input className={style.input} type="text" placeholder="상세주소" />
+                        <input className={style.input} type="text" placeholder="상세주소" onChange={onChangeDetailaddress} value={detailAddress !== "" ? detailAddress : props?.data?.fetchBoard?.boardAddress?.addressDetail || "" }/>
                     </div>
                 </div>
                 <hr></hr>
 
                 <div className={style.메인__1__1}>
                     <div>유튜브 링크</div>
-                    <input className={style.input} type="text" placeholder="링크를 입력해주세요." />
+                    <input className={style.input} type="text" placeholder="링크를 입력해주세요." onChange={onChangeYoutube} defaultValue={props.data?.fetchBoard.youtubeUrl ?? ""}/>
                 </div>
                 <hr></hr>
 
@@ -97,6 +109,17 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
                 <button className={style.푸터등록버튼} onClick={props.isEdit ? onClickUpdate : onClickSignUp} disabled={!props.isEdit && !isActive} style={{ backgroundColor: isActive ? "blue" : "gray" }}>등록하기</button>
 
             </div>
+
+            {isModalOpen && (
+                <Modal
+                    title="모달제목"
+                    open={true}
+                    onOk={onToggleModal}
+                    onCancel={onToggleModal}>
+
+                    <DaumPostcodeEmbed onComplete={onToggleModal} />
+                </Modal>
+            )}
 
         </div>
     )

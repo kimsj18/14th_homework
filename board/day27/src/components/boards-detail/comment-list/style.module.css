@@ -21,10 +21,15 @@
 .commentlist__info__left{
     display: flex;
     /* background-color: blueviolet; */
-    width: 193px;
+    /* width: 193px; */
     height: 24px;
     gap: 8px;
+    flex: 1;
 }
+
+.commentlist__info__left__1 div {
+    white-space: nowrap; /* 줄바꿈 방지 */
+  }
 
 .commentlist__info__left__1{
     display: flex;

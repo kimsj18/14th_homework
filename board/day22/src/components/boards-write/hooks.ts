@@ -15,6 +15,7 @@ import { IMyvariables } from "./types"
 
 
 
+
 export default function useBoardsWrite(){
     const boardId = useParams()
     const router = useRouter()
@@ -23,6 +24,7 @@ export default function useBoardsWrite(){
     const [password, setPassword] = useState<string>("")
     const [title, setTitle] = useState<string>("")
     const [content, setContent] = useState<string>("")
+    const [isModalOpen, setIsModalOpen] = useState(false);
     // const [board, setBoard] = useState<IBoard[]>([])
 
 
@@ -175,5 +177,7 @@ export default function useBoardsWrite(){
         titleError: titleError,
         contentError: contentError,
         isActive: isActive
+ 
+
     }
 }

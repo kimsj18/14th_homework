@@ -17,7 +17,7 @@ export default function useCommentWritePage() {
     const [writer, setWriter] = useState("")
     const [password, setPassword] = useState("")
     const [comment, setComment] = useState("")
-    const [rating, setRating] = useState(0)
+    const [rating, setRating] = useState(3)
 
     const onChangeWriter = (event: ChangeEvent<HTMLInputElement> ) => {
         setWriter(event.target.value)
@@ -32,6 +32,11 @@ export default function useCommentWritePage() {
     const onChangeComment = (event: ChangeEvent<HTMLTextAreaElement>) => {
         setComment(event.target.value)
 
+    }
+
+    const onclickRating = (event) => {
+        console.log(event)
+        setRating(event)
     }
 
     const onClickSubmit = async() => {
@@ -66,6 +71,7 @@ export default function useCommentWritePage() {
         onChangeWriter,
         onChangePassword,
         onChangeComment,
-        onClickSubmit
+        onClickSubmit,
+        onclickRating
     }
 }

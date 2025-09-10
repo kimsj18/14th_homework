@@ -5,6 +5,7 @@ import style from "./style.module.css"
 
 import { IBoardsWriteProps } from "./types";
 
+
 export default function BoardsWrite(props:IBoardsWriteProps ) {
     const { 
         onChangeEmail,
@@ -17,7 +18,10 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
         passwordError,
         titleError,
         contentError,
-        isActive
+        isActive,
+        onToggleModal,
+        isModalOpen
+
     } = useBoardsWrite()
 
     return (
@@ -56,7 +60,7 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
                         <div>주소</div>
                         <div className={style.메인__주소__주소검색}>
                             <input type="number" placeholder="01234" className={`${style.input} ${style.주소검색인풋}`} />
-                            <button className={style.주소검색버튼}>우편번호 검색</button>
+                            <button onClick={onToggleModal} className={style.주소검색버튼}>우편번호 검색</button>
                         </div>
                     </div>
                     <div>
@@ -98,6 +102,11 @@ export default function BoardsWrite(props:IBoardsWriteProps ) {
 
             </div>
 
+
+            
+
         </div>
+
+        
     )
 }

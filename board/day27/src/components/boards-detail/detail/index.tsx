@@ -4,12 +4,18 @@
 
 import style from './styles.module.css'
 import useBoardsDetail from './hooks';
+import { DislikeOutlined, EnvironmentOutlined, LikeOutlined, UserOutlined } from '@ant-design/icons'
+import { Button, Tooltip } from 'antd';
 
 
 
 
 export default function BoardsDetail() {
-    const {onClickMove, data} = useBoardsDetail()
+    const { 
+        onClickMove,
+        data,
+        onClickdisLike,
+        onClickLike } = useBoardsDetail()
 
     return (
         <div className={style.바탕}>
@@ -19,7 +25,8 @@ export default function BoardsDetail() {
                     <div className={style.header__row}>
                         <div className={style.header__user}>
                             <div className={style.header__avatar}>
-                                <img className={style.icon__profile} src="/assets/icons/profile.png"></img>
+                                <UserOutlined className={style.icon__profile} />
+
                             </div>
                             <div>{data?.fetchBoard.writer}</div>
                         </div>
@@ -30,7 +37,11 @@ export default function BoardsDetail() {
                     <hr />
                     <div className={style.header__icons}>
                         <img className={style.icon__link} src="/assets/icons/link.png" />
-                        <img className={style.icon__map} src="/assets/icons/jido.png" />
+
+                        <Tooltip title={`${data?.fetchBoard.boardAddress?.address} ${data?.fetchBoard.boardAddress?.addressDetail}`} placement="bottomRight" color='white' overlayInnerStyle={{ color: 'black' }}>
+                            <EnvironmentOutlined className={style.icon__map} />
+                        </Tooltip>
+
                     </div>
                 </div>
 
@@ -41,17 +52,26 @@ export default function BoardsDetail() {
                 </div>
 
                 <div className={style.image__wrapper}>
-                    <img className={style.image__frame} src="/assets/images/Frame4.png"></img>
+
+                    <iframe className={style.image__frame}
+                        src={`https://www.youtube.com/embed/${data?.fetchBoard.youtubeUrl?.split("v=")[1]}`}
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+
+
                 </div>
 
                 <div className={style.reactions}>
                     <div className={style.reactions__item}>
-                        <img src="/assets/icons/bad.png"></img>
-                        <div>24</div>
+                        <DislikeOutlined onClick={onClickdisLike} />
+
+                        <div>{data?.fetchBoard.dislikeCount}</div>
                     </div>
                     <div className={style.reactions__item}>
-                        <img src="/assets/icons/good.png"></img>
-                        <div>12</div>
+                        <LikeOutlined onClick={onClickLike} />
+                        <div>{data?.fetchBoard.likeCount}</div>
                     </div>
                 </div>
 
