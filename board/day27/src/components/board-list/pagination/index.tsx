@@ -10,10 +10,13 @@ import usePagination from "./hooks"
 
 
 export default function Pagination(props){
+    
+
     const {        startPage,
         onClickPage,
         onClickPrevPage,
-        onClickNextPage} = usePagination(props)
+        onClickNextPage,
+        eventButton} = usePagination(props)
 
 
 
@@ -32,7 +35,7 @@ export default function Pagination(props){
             {new Array(10).fill("아무거나").map((el, index)=> {
                 if(index + startPage <= props.lastPage){
                     return(
-                <button key={index + startPage} onClick={onClickPage} id={String(index + startPage)} className={style.paginationButton} >{index + startPage}</button>
+                <button key={index + startPage} onClick={onClickPage} id={String(index + startPage)} className={`${style.paginationButton} ${eventButton === index + startPage ? style.eventButton : ""}`}  >{index + startPage}</button>
             )}else{
                     return``
                 }
