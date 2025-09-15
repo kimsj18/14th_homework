@@ -1,0 +1,42 @@
+"uew client"
+
+import { useState } from "react"
+
+
+export default function usePagination(props){
+    // const { data, refetch} = useQuery(FETCH_BOARDS)
+    // const {data: dataCount} = useQuery(FETCH_BOARDS_COUNT)
+    const [startPage, setStartPage] = useState(1)
+
+    // const lastPage = Math.ceil((dataCount?.fetchBoardsCount ?? 10) /10)
+
+    const onClickPage = (event: React.MouseEvent<HTMLButtonElement> ) => {
+        props.refetch({page: Number(event.target.id)})
+    }
+
+    const onClickPrevPage = () => {
+        if(startPage === 1){
+
+        }else{
+        setStartPage(startPage - 10)
+        props.refetch({page: startPage - 10})
+        }
+    }
+
+    const onClickNextPage = () => {
+        console.log("라스트페이지" + props.lastPage)
+        if(startPage + 10 <= props.lastPage){
+        setStartPage(startPage + 10)
+        props.refetch({page: startPage + 10})}
+    }
+
+
+
+
+    return{
+        startPage,
+        onClickPage,
+        onClickPrevPage,
+        onClickNextPage
+    }
+}
