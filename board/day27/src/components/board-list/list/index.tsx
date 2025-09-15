@@ -31,7 +31,7 @@ export default function BoardsPage(props) {
                 {props?.data?.map((el, index) => {
                     return (
                         <a key={el._id} className={style.data} href={`/board/detail/${el._id}`}>
-                            <div className={style.data__number}>{index + props.}</div>
+                            <div className={style.data__number}>{index + 1}</div>
                             <div className={style.data__title}>{el.title}</div>
                             <div className={style.data__writer}>{el?.writer}</div>
                             <div className={style.data__date}>{el?.createdAt.slice(0, 10).replaceAll("-", ".")}</div>

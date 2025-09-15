@@ -32,7 +32,7 @@ export default function Pagination(props){
             ))} */}
             <button onClick={onClickPrevPage} className={style.prevButton}>이전</button>
             <div className={style.pagination}>
-            {new Array(10).fill("아무거나").map((el, index)=> {
+            {new Array(5).fill("아무거나").map((el, index)=> {
                 if(index + startPage <= props.lastPage){
                     return(
                 <button key={index + startPage} onClick={onClickPage} id={String(index + startPage)} className={`${style.paginationButton} ${eventButton === index + startPage ? style.eventButton : ""}`}  >{index + startPage}</button>

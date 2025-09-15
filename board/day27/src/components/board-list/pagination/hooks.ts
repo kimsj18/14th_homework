@@ -20,16 +20,16 @@ export default function usePagination(props){
         if(startPage === 1){
 
         }else{
-        setStartPage(startPage - 10)
-        props.refetch({page: startPage - 10})
+        setStartPage(startPage - 5)
+        props.refetch({page: startPage - 5})
         }
     }
 
     const onClickNextPage = () => {
         console.log("라스트페이지" + props.lastPage)
-        if(startPage + 10 <= props.lastPage){
-        setStartPage(startPage + 10)
-        props.refetch({page: startPage + 10})}
+        if(startPage + 5 <= props.lastPage){
+        setStartPage(startPage + 5)
+        props.refetch({page: startPage + 5})}
     }
 
 
