@@ -18,8 +18,8 @@ export default function Search({ refetch, setKeyword }) {
         refetch({
             search: inputKeyword,      // 검색어도 같이
             page: 1,
-            startDate: day[0].toISOString(),
-            endDate: day[1].toISOString()
+            startDate: date[0],
+            endDate: date[1]
           })
     }
 
