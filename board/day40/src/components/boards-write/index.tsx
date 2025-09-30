@@ -53,7 +53,7 @@ export default function BoardsWrite(props: IBoardsWriteProps) {
             </div>
             <div className={style.메인__1__1}>
               <div>비밀번호 <span className={style.필수}>*</span></div>
-              <input type="password" placeholder="비밀번호를 입력해 주세요." className={`${style.input} ${style.메인1__인풋}`} {...register("password")} disabled={props.isEdit} defaultValue={"********"} />
+              <input type="password" placeholder="비밀번호를 입력해 주세요." className={`${style.input} ${style.메인1__인풋}`} {...register("password")} disabled={props.isEdit} defaultValue={props.isEdit ? "********" : ""} />
               <div className={style.errorMassage}>{formState.errors.password?.message}</div>
             </div>
           </div>

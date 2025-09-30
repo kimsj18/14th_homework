@@ -20,7 +20,11 @@ const schema = z.object({
     writer: z.string().min(1, {message:"작성자를 입력해주세요."}),
     password: z.string().min(8, {message:"비밀번호는 8자 이상 입력해주세요"}).max(16, {message:"비밀번호는 16자 이하로 입력해주세요"}),
     title: z.string().min(2, {message:"제목은 2자 이상 입력해주세요"}),
-    contents:z.string().min(1, {message:"내용을 입력해주세요"})
+    contents:z.string().min(1, {message:"내용을 입력해주세요"}),
+    zipcode: z.string(),
+    address: z.string(),
+    addressDetail: z.string(),
+    youtubeUrl: z.string()
 
 })
 
