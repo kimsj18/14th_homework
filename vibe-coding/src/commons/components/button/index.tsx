@@ -76,15 +76,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         aria-disabled={disabled || loading}
         {...rest}
       >
-        {/* Left icon */}
-        {leftIcon && !loading && (
-          <span className={styles.leftIcon}>
-            {leftIcon}
-          </span>
-        )}
-        
-        {/* Loading spinner */}
-        {loading && (
+        {/* Left icon or loading spinner */}
+        {loading ? (
           <span className={styles.loadingSpinner}>
             <svg
               className={styles.spinner}
@@ -104,7 +97,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               />
             </svg>
           </span>
-        )}
+        ) : leftIcon ? (
+          <span className={styles.leftIcon}>
+            {leftIcon}
+          </span>
+        ) : null}
         
         {/* Button text content */}
         <span className={styles.content}>
