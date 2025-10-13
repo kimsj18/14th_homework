@@ -1,101 +1,253 @@
-import Image from "next/image";
+'use client';
+
+import React, { useState } from 'react';
+import Button, { ButtonGroup } from '@/commons/components/button';
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [loading, setLoading] = useState(false);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+  const handleLoadingTest = () => {
+    setLoading(true);
+    setTimeout(() => setLoading(false), 2000);
+  };
+
+  return (
+    <div className="min-h-screen p-8 bg-var(--color-bg-primary)">
+      <div className="max-w-6xl mx-auto">
+        <h1 className="typography-display-large text-center mb-12 text-var(--color-text-primary)">
+          Button Component Test
+        </h1>
+        
+        {/* Variant Tests */}
+        <section className="mb-12">
+          <h2 className="typography-headline-medium mb-6 text-var(--color-text-primary)">
+            Variants (Light Theme)
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Primary Variants */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-secondary)">Primary</h3>
+              <div className="space-y-3">
+                <Button variant="primary" size="small" theme="light">
+                  Small Primary
+                </Button>
+                <Button variant="primary" size="medium" theme="light">
+                  Medium Primary
+                </Button>
+                <Button variant="primary" size="large" theme="light">
+                  Large Primary
+                </Button>
+              </div>
+            </div>
+
+            {/* Secondary Variants */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-secondary)">Secondary</h3>
+              <div className="space-y-3">
+                <Button variant="secondary" size="small" theme="light">
+                  Small Secondary
+                </Button>
+                <Button variant="secondary" size="medium" theme="light">
+                  Medium Secondary
+                </Button>
+                <Button variant="secondary" size="large" theme="light">
+                  Large Secondary
+                </Button>
+              </div>
+            </div>
+
+            {/* Tertiary Variants */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-secondary)">Tertiary</h3>
+              <div className="space-y-3">
+                <Button variant="tertiary" size="small" theme="light">
+                  Small Tertiary
+                </Button>
+                <Button variant="tertiary" size="medium" theme="light">
+                  Medium Tertiary
+                </Button>
+                <Button variant="tertiary" size="large" theme="light">
+                  Large Tertiary
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Dark Theme Variants */}
+        <section className="mb-12 p-6 bg-var(--color-bg-inverse) rounded-lg">
+          <h2 className="typography-headline-medium mb-6 text-var(--color-text-inverse)">
+            Variants (Dark Theme)
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {/* Primary Dark */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-inverse)">Primary</h3>
+              <div className="space-y-3">
+                <Button variant="primary" size="small" theme="dark">
+                  Small Primary
+                </Button>
+                <Button variant="primary" size="medium" theme="dark">
+                  Medium Primary
+                </Button>
+                <Button variant="primary" size="large" theme="dark">
+                  Large Primary
+                </Button>
+              </div>
+            </div>
+
+            {/* Secondary Dark */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-inverse)">Secondary</h3>
+              <div className="space-y-3">
+                <Button variant="secondary" size="small" theme="dark">
+                  Small Secondary
+                </Button>
+                <Button variant="secondary" size="medium" theme="dark">
+                  Medium Secondary
+                </Button>
+                <Button variant="secondary" size="large" theme="dark">
+                  Large Secondary
+                </Button>
+              </div>
+            </div>
+
+            {/* Tertiary Dark */}
+            <div className="space-y-4">
+              <h3 className="typography-title-medium text-var(--color-text-inverse)">Tertiary</h3>
+              <div className="space-y-3">
+                <Button variant="tertiary" size="small" theme="dark">
+                  Small Tertiary
+                </Button>
+                <Button variant="tertiary" size="medium" theme="dark">
+                  Medium Tertiary
+                </Button>
+                <Button variant="tertiary" size="large" theme="dark">
+                  Large Tertiary
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Special States */}
+        <section className="mb-12">
+          <h2 className="typography-headline-medium mb-6 text-var(--color-text-primary)">
+            Special States
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="space-y-3">
+              <h3 className="typography-title-small text-var(--color-text-secondary)">Disabled</h3>
+              <Button variant="primary" disabled>
+                Disabled Button
+              </Button>
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="typography-title-small text-var(--color-text-secondary)">Loading</h3>
+              <Button 
+                variant="primary" 
+                loading={loading}
+                onClick={handleLoadingTest}
+              >
+                {loading ? 'Loading...' : 'Click to Load'}
+              </Button>
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="typography-title-small text-var(--color-text-secondary)">Full Width</h3>
+              <Button variant="secondary" fullWidth>
+                Full Width Button
+              </Button>
+            </div>
+            
+            <div className="space-y-3">
+              <h3 className="typography-title-small text-var(--color-text-secondary)">With Icons</h3>
+              <Button 
+                variant="primary" 
+                leftIcon={<span>📧</span>}
+                rightIcon={<span>→</span>}
+              >
+                Send Email
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Button Groups */}
+        <section className="mb-12">
+          <h2 className="typography-headline-medium mb-6 text-var(--color-text-primary)">
+            Button Groups
+          </h2>
+          <div className="space-y-6">
+            <div>
+              <h3 className="typography-title-small mb-3 text-var(--color-text-secondary)">
+                Horizontal Group
+              </h3>
+              <ButtonGroup orientation="horizontal" spacing="medium">
+                <Button variant="secondary" size="medium">
+                  Cancel
+                </Button>
+                <Button variant="primary" size="medium">
+                  Save
+                </Button>
+                <Button variant="tertiary" size="medium">
+                  More
+                </Button>
+              </ButtonGroup>
+            </div>
+            
+            <div>
+              <h3 className="typography-title-small mb-3 text-var(--color-text-secondary)">
+                Vertical Group
+              </h3>
+              <ButtonGroup orientation="vertical" spacing="small">
+                <Button variant="tertiary" size="medium" fullWidth>
+                  Option 1
+                </Button>
+                <Button variant="tertiary" size="medium" fullWidth>
+                  Option 2
+                </Button>
+                <Button variant="tertiary" size="medium" fullWidth>
+                  Option 3
+                </Button>
+              </ButtonGroup>
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Test */}
+        <section className="mb-12">
+          <h2 className="typography-headline-medium mb-6 text-var(--color-text-primary)">
+            Interactive Test
+          </h2>
+          <div className="space-y-4">
+            <p className="typography-body-medium text-var(--color-text-secondary)">
+              모든 버튼을 클릭해보세요. 호버, 포커스, 액티브 상태를 확인할 수 있습니다.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button 
+                variant="primary" 
+                onClick={() => alert('Primary 버튼이 클릭되었습니다!')}
+              >
+                Primary 클릭
+              </Button>
+              <Button 
+                variant="secondary" 
+                onClick={() => alert('Secondary 버튼이 클릭되었습니다!')}
+              >
+                Secondary 클릭
+              </Button>
+              <Button 
+                variant="tertiary" 
+                onClick={() => alert('Tertiary 버튼이 클릭되었습니다!')}
+              >
+                Tertiary 클릭
+              </Button>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }
